@@ -5,9 +5,15 @@ import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <h2>Hello</h2>
-    </div>
+    <>
+      HeroBanner
+      <div className="products-heading">
+        <h2>Best Selling Products</h2>
+        <p>Speakers of many variations</p>
+      </div>
+      <div>{["Product 1", "Product 2"].map((product) => product)}</div>
+      Footer
+    </>
   );
 };
 
