@@ -12,21 +12,29 @@ import {
 import styles from "../styles/Home.module.css";
 import { NextPage } from "next";
 
-interface HomeProps {
+type HomeProps = {
   products: any[];
   bannerData: any[];
-}
+};
 
 const Home = ({ products, bannerData }: HomeProps) => (
   <div>
-    <HeroBanner />
+    <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
     {/* {console.log(bannerData)} */}
     <div className="products-heading">
       <h2>Best Selling Products</h2>
+
       <p>Speakers of many variations</p>
     </div>
     <div className="products-container">
-      {products?.map((items) => items.name)}
+      {products?.map((product) => (
+        <Product key={product._id} 
+        product={product} />
+      ))}
+      {/* {products?.map((product) => (
+        
+        <Product key={product._id} product={product} />
+      ))} */}
     </div>
     <FooterBanner />
   </div>
@@ -34,7 +42,7 @@ const Home = ({ products, bannerData }: HomeProps) => (
 
 export const getServerSideProps = async () => {
   const query = '*[_type == "product"]';
-  const products: string = await client.fetch(query);
+  const products = await client.fetch(query);
 
   const bannerQuery = '*[_type == "banner"]';
   const bannerData = await client.fetch(bannerQuery);
