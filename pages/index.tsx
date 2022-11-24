@@ -1,5 +1,6 @@
 import React from "react";
 import { client } from "../lib/client";
+import { Products, Banner } from "../typing";
 import {
   Cart,
   Footer,
@@ -9,18 +10,16 @@ import {
   Navbar,
   Product,
 } from "../components";
-import styles from "../styles/Home.module.css";
-import { NextPage } from "next";
 
 type HomeProps = {
-  products: any[];
-  bannerData: any[];
+  products: Products[];
+  bannerData: Banner[];
 };
 
-const Home = ({ products, bannerData }: HomeProps) => (
+const Home: React.FC<HomeProps> = ({ products, bannerData }) => (
   <div>
+    {console.log("hello", products[0].name)}
     <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
-    {/* {console.log(bannerData)} */}
     <div className="products-heading">
       <h2>Best Selling Products</h2>
 
@@ -28,8 +27,7 @@ const Home = ({ products, bannerData }: HomeProps) => (
     </div>
     <div className="products-container">
       {products?.map((product) => (
-        <Product key={product._id} 
-        product={product} />
+        <Product key={product._id} product={product} />
       ))}
       {/* {products?.map((product) => (
         

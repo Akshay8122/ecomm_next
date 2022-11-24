@@ -1,4 +1,4 @@
-export interface Product extends ProductBody {
+export interface Products extends ProductBody {
   _id: string;
   _createdAt: string;
   _updatedAt: string;
@@ -7,11 +7,16 @@ export interface Product extends ProductBody {
 }
 
 export type ProductBody = {
-  image?: string[];
+  image: {}[];
   name: string;
   slug: string;
   price: number;
   details: string;
+};
+
+export type productProp = {
+  key: string;
+  product: Products;
 };
 
 export interface Banner extends BannerBody {
