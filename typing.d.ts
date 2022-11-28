@@ -14,27 +14,31 @@ export type ProductBody = {
   details: string;
 };
 
-export type productProp = {
+export interface IproductProp {
   key: string;
   product: Products;
-};
+}
 
-export interface Banner extends BannerBody {
+export interface IbannerProp {
+  heroBanner: Banner;
+}
+
+export interface Banner {
   _id: string;
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   _type: "banner";
-}
-
-export type BannerBody = {
+  image: string;
   buttonText: string;
   product: string;
   desc: string;
-  image?: string;
+  urlFor: any;
+  // image?: string;
   smallText: string;
+  midText: string;
   largeText1: string;
   largeText2: string;
   discount: string;
   saleTime: saleTime;
-};
+}

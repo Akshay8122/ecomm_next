@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
-import { Products, productProp } from "../typing";
+import { Products, IproductProp } from "../typing";
 
-const Product: React.FC<productProp> = ({
+const Product: React.FC<IproductProp> = ({
   product: { image, slug, name, price },
 }) => {
   return <div>Product</div>;

@@ -18,8 +18,7 @@ type HomeProps = {
 
 const Home: React.FC<HomeProps> = ({ products, bannerData }) => (
   <div>
-    {console.log("hello", products[0].name)}
-    <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
+    <HeroBanner heroBanner={bannerData.length && (bannerData[0] as any)} />
     <div className="products-heading">
       <h2>Best Selling Products</h2>
 
@@ -29,10 +28,6 @@ const Home: React.FC<HomeProps> = ({ products, bannerData }) => (
       {products?.map((product) => (
         <Product key={product._id} product={product} />
       ))}
-      {/* {products?.map((product) => (
-        
-        <Product key={product._id} product={product} />
-      ))} */}
     </div>
     <FooterBanner />
   </div>
