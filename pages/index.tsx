@@ -29,7 +29,7 @@ const Home: React.FC<HomeProps> = ({ products, bannerData }) => (
         <Product key={product._id} product={product} />
       ))}
     </div>
-    <FooterBanner />
+    <FooterBanner footerBanner={bannerData && bannerData[0]} />
   </div>
 );
 
