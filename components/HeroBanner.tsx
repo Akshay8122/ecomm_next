@@ -4,8 +4,6 @@ import { urlFor } from "../lib/client";
 import { IbannerProp } from "../typing";
 
 const HeroBanner: React.FC<IbannerProp> = ({ heroBanner }): JSX.Element => {
-  // console.log("hero", heroBanner);
-
   return (
     <div className="hero-banner-container">
       <div>

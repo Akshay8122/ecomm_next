@@ -9,10 +9,14 @@ export interface Products extends ProductBody {
 export type ProductBody = {
   image: {}[];
   name: string;
-  slug: string;
+  slug: string | any;
   price: number;
   details: string;
 };
+
+export type TfooterBanner = {
+  footerBanner:Banner
+}
 
 export interface IproductProp {
   key: string;
