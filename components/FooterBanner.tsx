@@ -1,9 +1,9 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
 import { urlFor } from "../lib/client";
-import { TfooterBanner } from "../typing";
+import { TFooterBanner } from "../typing";
 
-const FooterBanner: React.FC<TfooterBanner> = ({
+const FooterBanner: React.FC<TFooterBanner> = ({
   footerBanner: {
     discount,
     largeText1,

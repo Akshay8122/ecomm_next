@@ -14,16 +14,16 @@ export type ProductBody = {
   details: string;
 };
 
-export type TfooterBanner = {
+export type TFooterBanner = {
   footerBanner:Banner
 }
 
-export interface IproductProp {
+export interface IProductProp {
   key: string;
   product: Products;
 }
 
-export interface IbannerProp {
+export interface IBannerProp {
   heroBanner: Banner;
 }
 
