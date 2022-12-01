@@ -1,14 +1,51 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import React from "react";
+import { client } from "../lib/client";
+import { Products, Banner } from "../typing";
+import {
+  Cart,
+  Footer,
+  FooterBanner,
+  HeroBanner,
+  Layout,
+  Navbar,
+  Product,
+} from "../components";
 
-const Home: NextPage = () => {
-  return (
-    <div className={styles.container}>
-      <h2>Hello</h2>
+type HomeProps = {
+  products: Products[];
+  bannerData: Banner[];
+};
+
+const Home: React.FC<HomeProps> = ({ products, bannerData }) => (
+  <div>
+    <HeroBanner heroBanner={bannerData.length && (bannerData[0] as any)} />
+    <div className="products-heading">
+      <h2>Best Selling Products</h2>
+
+      <p>Speakers of many variations</p>
     </div>
-  );
+    <div className="products-container">
+      {products?.map((product) => (
+        <Product key={product._id} product={product} />
+      ))}
+    </div>
+    <FooterBanner footerBanner={bannerData && bannerData[0]} />
+  </div>
+);
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "product"]';
+  const products = await client.fetch(query);
+
+  const bannerQuery = '*[_type == "banner"]';
+  const bannerData = await client.fetch(bannerQuery);
+
+  return {
+    props: {
+      products,
+      bannerData,
+    },
+  };
 };
 
 export default Home;
