@@ -1,4 +1,5 @@
 export interface Products extends ProductBody {
+  [x: string]: any;
   _id: string;
   _createdAt: string;
   _updatedAt: string;
@@ -15,8 +16,8 @@ export type ProductBody = {
 };
 
 export type TFooterBanner = {
-  footerBanner:Banner
-}
+  footerBanner: Banner;
+};
 
 export interface IProductProp {
   key: string;
@@ -25,6 +26,18 @@ export interface IProductProp {
 
 export interface IBannerProp {
   heroBanner: Banner;
+}
+
+export interface IProductDetails {
+  image: string[];
+  name: string;
+  price: number;
+  details: string;
+}
+
+export interface ISlugDetails {
+  product: IProductDetails;
+  products: Products;
 }
 
 export interface Banner {
