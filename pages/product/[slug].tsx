@@ -14,7 +14,7 @@ const ProductDetails = ({ product, products }: ISlugDetails) => {
   // console.log(products[0], "this is for products");
   const [index, setIndex] = useState(0);
   const { image, name, price, details } = product;
-  const { decQty, incQty, qty }: any = useStateContext();
+  const { decQty, incQty, qty, onAdd }: any = useStateContext();
 
   return (
     <div>
@@ -73,7 +73,11 @@ const ProductDetails = ({ product, products }: ISlugDetails) => {
           </div>
 
           <div className="buttons">
-            <button type="button" className="add-to-cart">
+            <button
+              type="button"
+              className="add-to-cart"
+              onClick={() => onAdd(product, qty)}
+            >
               Add to Crat
             </button>
             <button type="button" className="buy-now">
