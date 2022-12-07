@@ -11,13 +11,12 @@ import { client, urlFor } from "../../lib/client";
 import { ISlugDetails } from "../../typing";
 
 const ProductDetails = ({ product, products }: ISlugDetails) => {
-  // console.log(products[0], "this is for products");
   const [index, setIndex] = useState(0);
   const { image, name, price, details } = product;
   const { decQty, incQty, qty, onAdd }: any = useStateContext();
 
   return (
-    <div>
+    <>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
@@ -78,7 +77,7 @@ const ProductDetails = ({ product, products }: ISlugDetails) => {
               className="add-to-cart"
               onClick={() => onAdd(product, qty)}
             >
-              Add to Crat
+              Add to Cart
             </button>
             <button type="button" className="buy-now">
               Buy Now
@@ -97,7 +96,7 @@ const ProductDetails = ({ product, products }: ISlugDetails) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
