@@ -525,6 +525,7 @@ padding: 30px 65px;
 }
 .quantity-desc{
   border: 1px solid gray;
+  user-select: none;
 padding: 6px;
 }
 .quantity-desc span{
