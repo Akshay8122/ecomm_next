@@ -98,6 +98,9 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
       value={{
         showCart,
         setShowCart,
+        setCartItems,
+        setTotalPrice,
+        setTotalQuantities,
         cartItems,
         totalPrice,
         totalQuantities,
