@@ -1,10 +1,16 @@
 export interface Products extends ProductBody {
-  [x: string]: any;
   _id: string;
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   _type: "product";
+}
+
+export interface IStateContext {
+  _id: number;
+  quantity: number;
+  price: number;
+  name: string;
 }
 
 export type ProductBody = {
@@ -51,7 +57,6 @@ export interface Banner {
   product: string;
   desc: string;
   urlFor: any;
-  // image?: string;
   smallText: string;
   midText: string;
   largeText1: string;

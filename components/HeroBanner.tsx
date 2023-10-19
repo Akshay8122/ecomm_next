@@ -17,9 +17,13 @@ const HeroBanner: React.FC<IBannerProp> = ({ heroBanner }): JSX.Element => {
         />
 
         <div>
-          <Link href="/product/ID">
+          <Link href={`/product/${heroBanner.product}`}>
             <button type="button">{heroBanner.buttonText}</button>
           </Link>
+
+          {/* <p className="beats-solo">
+              Limited Time Preiod:{heroBanner.saleTime}
+            </p> */}
           <div className="desc">
             <h5>Description</h5>
             <p>{heroBanner.desc}</p>
