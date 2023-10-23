@@ -5,7 +5,7 @@ import { Cart } from "./";
 import { useStateContext } from "../context/StateContext";
 
 const Navbar: React.FC = () => {
-  const { setShowCart, showCart, totalQuantities }: any = useStateContext();
+  const { setShowCart, showCart, totalQuantities } = useStateContext();
 
   return (
     <div className="navbar-container">

@@ -12,9 +12,10 @@ import toast from "react-hot-toast";
 import getStripe from "../lib/getStripe.";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
+import { IProductDetails } from "../typing";
 
 const Cart: React.FC = () => {
-  const Cartref: any = useRef();
+  const Cartref: React.MutableRefObject<HTMLInputElement | null> = useRef(null);
   const {
     totalPrice,
     totalQuantities,
@@ -22,7 +23,7 @@ const Cart: React.FC = () => {
     setShowCart,
     toggleCartItemQuantity,
     onRemove,
-  }: any = useStateContext();
+  } = useStateContext();
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
@@ -41,7 +42,7 @@ const Cart: React.FC = () => {
 
     toast.loading("Redirecting...");
 
-    stripe.redirectToCheckout({ sessionId: data.id });
+    stripe?.redirectToCheckout({ sessionId: data.id });
   };
 
   return (
@@ -76,12 +77,14 @@ const Cart: React.FC = () => {
 
         <div className="product-container">
           {cartItems.length >= 1 &&
-            cartItems.map((item: any, index: any) => (
+            cartItems.map((item: IProductDetails, _index: number) => (
               <div className="product" key={item._id}>
                 <img
-                  src={urlFor(item?.image[0] as any)}
+                  src={urlFor(item?.image[0])}
                   className="cart-product-image"
+                  alt="product-img"
                 />
+
                 <div className="item-desc">
                   <div className="flex-top">
                     <h5>{item.name}</h5>

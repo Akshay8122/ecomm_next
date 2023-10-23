@@ -1,22 +1,22 @@
 import React, { createContext, useContext, useState } from "react";
 import { toast } from "react-hot-toast";
-import { IStateContext } from "../typing";
+import { IStateContext, ProductBody, IcartItems } from "../typing";
 
-const Context = createContext<any>(null);
+const Context = createContext<IcartItems>({} as IcartItems);
 
 export const StateContext = ({ children }: { children: React.ReactNode }) => {
-  const [showCart, setShowCart] = useState(false);
+  const [showCart, setShowCart] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<IStateContext[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [totalQuantities, setTotalQuantities] = useState(0);
-  const [qty, setQty] = useState(1);
+  const [totalQuantities, setTotalQuantities] = useState<number>(0);
+  const [qty, setQty] = useState<number>(1);
 
-  let foundProduct: any;
+  let foundProduct: ProductBody | any;
   let index;
 
   const onAdd = (product: IStateContext, quantity: number) => {
     const checkProductInCart = cartItems.find(
-      (item: any) => item._id === product._id
+      (item) => item._id === product._id
     );
 
     setTotalPrice(
@@ -28,7 +28,6 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
 
     if (checkProductInCart) {
       const updatedCartItems: any = cartItems.map((cartProduct) => {
-        console.log("this is for cartItems", cartProduct);
         if (cartProduct._id === product._id)
           return {
             ...cartProduct,
@@ -58,7 +57,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
     setCartItems(newCartItems);
   };
 
-  const toggleCartItemQuantity = (id: number, value: any) => {
+  const toggleCartItemQuantity = (id: number, value: string) => {
     foundProduct = cartItems.find((item) => item._id === id);
     index = cartItems.findIndex((product) => product._id === id);
     const newCartItems = cartItems.filter((item) => item._id !== id);
@@ -66,7 +65,7 @@ export const StateContext = ({ children }: { children: React.ReactNode }) => {
     if (value === "inc") {
       setCartItems([
         ...newCartItems,
-        { ...foundProduct, quantity: foundProduct.quantity + 1 },
+        { ...foundProduct, quantity: foundProduct?.quantity + 1 },
       ]);
       setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);

@@ -5,11 +5,11 @@ export const SchoolPride = () => {
   var animationEnd = Date.now() + duration;
   var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-  function randomInRange(min: any, max: any) {
+  function randomInRange(min: number, max: number) {
     return Math.random() * (max - min) + min;
   }
-
-  var interval: any = setInterval(function () {
+  // @ts-ignore
+  var interval = setInterval(function () {
     var timeLeft = animationEnd - Date.now();
 
     if (timeLeft <= 0) {

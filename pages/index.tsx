@@ -1,24 +1,16 @@
 import React from "react";
 import { client } from "../lib/client";
-import { Products, Banner } from "../typing";
-import {
-  Cart,
-  Footer,
-  FooterBanner,
-  HeroBanner,
-  Layout,
-  Navbar,
-  Product,
-} from "../components";
+import { Products, Banner, IBannerProp } from "../typing";
+import { FooterBanner, HeroBanner, Product } from "../components";
 
 type HomeProps = {
   products: Products[];
   bannerData: Banner[];
 };
 
-const Home: React.FC<HomeProps> = ({ products, bannerData }) => (
+const Home = ({ products, bannerData }: HomeProps) => (
   <div>
-    <HeroBanner heroBanner={bannerData.length && (bannerData[0] as any)} />
+    <HeroBanner heroBanner={bannerData && bannerData[0]} />
     <div className="products-heading">
       <h2>Best Selling Products</h2>
 

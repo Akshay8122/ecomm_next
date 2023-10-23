@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
-import { IBannerProp } from "../typing";
+import { Banner } from "../typing";
 
-const HeroBanner: React.FC<IBannerProp> = ({ heroBanner }): JSX.Element => {
+const HeroBanner = ({ heroBanner }: { heroBanner: Banner }): JSX.Element => {
   return (
     <div className="hero-banner-container">
       <div>
