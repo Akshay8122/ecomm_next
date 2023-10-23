@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { urlFor } from "../lib/client";
-import { IBannerProp } from "../typing";
+import { Banner } from "../typing";
 
-const HeroBanner: React.FC<IBannerProp> = ({ heroBanner }): JSX.Element => {
+const HeroBanner = ({ heroBanner }: { heroBanner: Banner }): JSX.Element => {
   return (
     <div className="hero-banner-container">
       <div>
@@ -17,9 +17,13 @@ const HeroBanner: React.FC<IBannerProp> = ({ heroBanner }): JSX.Element => {
         />
 
         <div>
-          <Link href="/product/ID">
+          <Link href={`/product/${heroBanner.product}`}>
             <button type="button">{heroBanner.buttonText}</button>
           </Link>
+
+          {/* <p className="beats-solo">
+              Limited Time Preiod:{heroBanner.saleTime}
+            </p> */}
           <div className="desc">
             <h5>Description</h5>
             <p>{heroBanner.desc}</p>
