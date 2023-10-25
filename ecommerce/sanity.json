@@ -2,7 +2,7 @@
   "root": true,
   "api": {
     "projectId": "2p4vl31t",
-    "dataset": "production"
+    "dataset": "sanity-ecomm"
   },
   "project": {
     "name": "ecommerce"
